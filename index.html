@@ -403,7 +403,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.5;z-index:0"></canvas>
+  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.65;z-index:0"></canvas>
   <p class="hero-eyebrow">IT-Service · Donauwörth & Region</p>
   <h1>IT, die <em>wirklich<br>funktioniert.</em></h1>
   <p class="hero-sub">
@@ -616,8 +616,8 @@ window.addEventListener('load', function(){
   const COUNT = 55;
   const BOND_DIST = 180;
   const MAX_BONDS_PER_NODE = 5;
-  const FADE_SPEED = 0.0018;
-  const MAX_ALPHA = 0.55;
+  const FADE_SPEED = 0.0022;
+  const MAX_ALPHA = 0.72;
 
   function resize(){
     W = canvas.width = canvas.parentElement.offsetWidth;
@@ -677,14 +677,14 @@ window.addEventListener('load', function(){
       grad.addColorStop(0.5,'rgba(228,168,90,'+(bond.alpha*0.7)+')');
       grad.addColorStop(1,'rgba(200,135,58,'+bond.alpha+')');
       ctx.strokeStyle=grad;
-      ctx.lineWidth=0.7;
+      ctx.lineWidth=1.1;
       ctx.stroke();
     });
 
     // Draw nodes
     nodes.forEach(n=>{
       n.pulse += 0.022;
-      const glow=0.65+Math.sin(n.pulse)*0.35;
+      const glow=0.78+Math.sin(n.pulse)*0.35;
 
       // Glow ring on bonded nodes
       if(n.bondCount>0){
