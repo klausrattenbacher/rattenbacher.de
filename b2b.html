@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT-Vermittlung für Unternehmen · Rattenbacher-IT</title>
+  <meta name="description" content="Rattenbacher-IT vermittelt IT-Dienstleister für Unternehmen – neutral, erfahren und strukturiert. Anforderungsanalyse, Briefing, Matching, Vergabebegleitung." />
+  <meta name="robots" content="index, follow" />
+  <style>
+    :root {
+      --bg:       #0d1117;
+      --surface:  #161b22;
+      --border:   #21262d;
+      --accent:   #c8873a;
+      --accent2:  #a06828;
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --tag-bg:   #2a1e0f;
+      --tag-text: #e8a04a;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── TOPBAR / NAVIGATION ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .topbar-brand .back-arrow {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .topbar-brand:hover .back-arrow { color: var(--accent); }
+
+    .topbar-brand .brand-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-brand .brand-name span { color: var(--accent); }
+
+    .topbar-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tag-text);
+      background: var(--tag-bg);
+      border: 1px solid #3a2510;
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .topbar-nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .topbar-nav a:hover { color: var(--text); }
+
+    .topbar-nav .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .topbar-nav .nav-cta:hover { background: var(--accent2); color: #fff; }
+
+    @media (max-width: 600px) {
+      .topbar-nav a:not(.nav-cta) { display: none; }
+      .topbar-badge { display: none; }
+    }
+
+    /* ── HERO ── */
+    .b2b-hero {
+      background: linear-gradient(135deg, #0d1117 0%, #1f1208 60%, #0d1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 88px 24px 72px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tag-text);
+      background: var(--tag-bg);
+      border: 1px solid #3a2510;
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 28px;
+    }
+
+    .b2b-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .b2b-hero h1 em {
+      font-style: normal;
+      color: var(--tag-text);
+    }
+
+    .b2b-hero .sub {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 28px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent2); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 28px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.18s, color 0.18s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--tag-text); color: var(--tag-text); }
+
+    /* ── NOT FOR ── */
+    .not-for {
+      text-align: center;
+      padding: 20px 24px 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .not-for span {
+      display: inline-block;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 6px 14px;
+      margin-top: 8px;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* ── PROZESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .process-step {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .process-step:last-child { border-right: none; }
+
+    @media (max-width: 640px) {
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .process-step:last-child { border-bottom: none; }
+    }
+
+    .step-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── PAKETE ── */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .package-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.2s;
+    }
+    .package-card:hover { border-color: #30363d; }
+    .package-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .pkg-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .pkg-audience {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pkg-price {
+      font-size: 0.9rem;
+      color: var(--tag-text);
+      background: var(--tag-bg);
+      border: 1px solid #3a2510;
+      border-radius: 8px;
+      padding: 10px 14px;
+      line-height: 1.5;
+    }
+
+    .pkg-price strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .pkg-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+    }
+
+    .pkg-features li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .pkg-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .pkg-features li.na { color: #3a3f47; }
+    .pkg-features li.na::before { content: '–'; color: #3a3f47; }
+
+    /* ── ABGRENZUNG ── */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 580px) { .scope-grid { grid-template-columns: 1fr; } }
+
+    .scope-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .scope-card h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .scope-card.yes h4 { color: #3fb950; }
+    .scope-card.no  h4 { color: #f85149; }
+
+    .scope-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .scope-card ul li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+    }
+    .scope-card.yes ul li::before { content: '✓'; position: absolute; left: 0; color: #3fb950; font-weight: 700; }
+    .scope-card.no  ul li::before { content: '✗'; position: absolute; left: 0; color: #f85149; font-weight: 700; }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .contact-inner p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+      text-align: left;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .contact-row .label {
+      color: var(--muted);
+      min-width: 100px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .contact-row a {
+      color: var(--tag-text);
+      text-decoration: none;
+    }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .footer-brand span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav class="topbar">
+    <a href="/" class="topbar-brand">
+      <span class="back-arrow">← </span>
+      <span class="brand-name">Rattenbacher-<span>IT</span></span>
+      <span class="topbar-badge">B2B</span>
+    </a>
+    <div class="topbar-nav">
+      <a href="#prozess">So funktioniert es</a>
+      <a href="#pakete">Pakete</a>
+      <a href="#kontakt" class="nav-cta">Erstgespräch</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="b2b-hero">
+    <div class="eyebrow">Exklusiv für Unternehmen · B2B</div>
+    <h1>Sie wissen, was Ihre IT leisten soll.<br><em>Ich finde, wer es umsetzt.</em></h1>
+    <p class="sub">
+      Rattenbacher-IT nimmt Ihre Anforderungen auf, erstellt ein klares Briefing und vermittelt den passenden IT-Dienstleister – neutral, erfahren und auf Ihrer Seite.
+    </p>
+    <div class="cta-row">
+      <a href="#pakete" class="btn-primary">Pakete ansehen</a>
+      <a href="#kontakt" class="btn-ghost">Kostenloses Erstgespräch</a>
+    </div>
+  </section>
+
+  <p class="not-for">
+    <span>Kein Privatkundengeschäft · Keine eigene Softwareentwicklung · Keine Personalvermittlung</span>
+  </p>
+
+  <hr class="divider" style="margin-top: 32px;" />
+
+  <!-- ══════════════════════════════════════════
+       PROZESS
+  ══════════════════════════════════════════ -->
+  <div class="section" id="prozess">
+    <p class="section-label">So funktioniert es</p>
+    <h2 class="section-title">Vom Bedarf zum Dienstleister –<br>in vier Schritten.</h2>
+    <p class="section-sub">
+      Kein Ausschreibungschaos. Kein Raten. Nur strukturierte Vergabe mit einem erfahrenen IT-Fachmann an Ihrer Seite.
+    </p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">Schritt 1</div>
+        <div class="step-title">Anforderungsanalyse</div>
+        <div class="step-desc">Gemeinsam erfassen wir Ihren IT-Bedarf – Ziele, Systeme, Budget, Zeitrahmen und Compliance-Anforderungen.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">Schritt 2</div>
+        <div class="step-title">Briefing & Lastenheft</div>
+        <div class="step-desc">Ich formuliere ein klares Briefing-Dokument als Grundlage für jede Ausschreibung – präzise, vollständig und verständlich.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">Schritt 3</div>
+        <div class="step-title">Dienstleister-Matching</div>
+        <div class="step-desc">Aus meinem geprüften Partnernetzwerk werden geeignete IT-Unternehmen identifiziert, angefragt und fachlich bewertet.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">Schritt 4</div>
+        <div class="step-title">Vergabe & Begleitung</div>
+        <div class="step-desc">Ich begleite Sie bei Angebotsvergleich und Vergabe – und bleibe auf Wunsch als neutrale Kontrollinstanz im Projekt.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════════
+       PAKETE
+  ══════════════════════════════════════════ -->
+  <div class="section" id="pakete">
+    <p class="section-label">Angebotspakete</p>
+    <h2 class="section-title">Drei Modelle. Klare Konditionen.</h2>
+    <p class="section-sub">
+      Ob einmalige Vergabe oder dauerhafter Beschaffungspartner – wählen Sie das Modell, das zu Ihrem Bedarf passt.
+    </p>
+
+    <div class="packages">
+
+      <div class="package-card">
+        <div>
+          <div class="pkg-name">Starter</div>
+          <div class="pkg-audience">Einmalige IT-Vergabe</div>
+        </div>
+        <div class="pkg-price">
+          <strong>Erfolgshonorar 8–12 %</strong>
+          der vermittelten Auftragssumme · nur bei erfolgreicher Vergabe
+        </div>
+        <ul class="pkg-features">
+          <li>Anforderungsanalyse & Briefing</li>
+          <li>Matching mit geeigneten Dienstleistern</li>
+          <li>Fachliche Angebotsbewertung</li>
+          <li class="na">Vergabebegleitung</li>
+          <li class="na">Projektbegleitung</li>
+          <li class="na">Priorisierter Zugang</li>
+        </ul>
+        <a href="#kontakt" class="btn-ghost" style="text-align:center;">Erstgespräch vereinbaren</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="featured-badge">Empfohlen</div>
+        <div>
+          <div class="pkg-name">Professional</div>
+          <div class="pkg-audience">Mittlere Projekte · bis 3 Aufträge/Jahr</div>
+        </div>
+        <div class="pkg-price">
+          <strong>500–800 € / Monat</strong>
+          Retainer + 5 % Erfolgshonorar je Vergabe
+        </div>
+        <ul class="pkg-features">
+          <li>Anforderungsanalyse & Briefing</li>
+          <li>Matching mit geeigneten Dienstleistern</li>
+          <li>Fachliche Angebotsbewertung</li>
+          <li>Vergabebegleitung inklusive</li>
+          <li>Projektbegleitung auf Stundenbasis</li>
+          <li>Prioritärer Zugang & schnelle Reaktionszeit</li>
+        </ul>
+        <a href="#kontakt" class="btn-primary" style="text-align:center;">Erstgespräch vereinbaren</a>
+      </div>
+
+      <div class="package-card">
+        <div>
+          <div class="pkg-name">Partner</div>
+          <div class="pkg-audience">Laufender IT-Beschaffungsbedarf</div>
+        </div>
+        <div class="pkg-price">
+          <strong>1.200–2.000 € / Monat</strong>
+          Retainer + 3 % Erfolgshonorar · unbegrenzte Aufträge
+        </div>
+        <ul class="pkg-features">
+          <li>Anforderungsanalyse & Briefing</li>
+          <li>Matching mit geeigneten Dienstleistern</li>
+          <li>Fachliche Angebotsbewertung</li>
+          <li>Vergabebegleitung inklusive</li>
+          <li>Projektbegleitung inklusive</li>
+          <li>Dedizierter Ansprechpartner · höchste Priorität</li>
+        </ul>
+        <a href="#kontakt" class="btn-ghost" style="text-align:center;">Erstgespräch vereinbaren</a>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════════
+       ABGRENZUNG
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <p class="section-label">Leistungsabgrenzung</p>
+    <h2 class="section-title">Was Rattenbacher-IT ist –<br>und was nicht.</h2>
+    <p class="section-sub">Transparenz schafft Vertrauen. Hier ist klar definiert, was Sie erwarten dürfen.</p>
+
+    <div class="scope-grid">
+      <div class="scope-card yes">
+        <h4>✓ Das leiste ich</h4>
+        <ul>
+          <li>Neutrale Beratung auf Kundenseite</li>
+          <li>Strukturierte Anforderungsaufnahme</li>
+          <li>Qualifiziertes Dienstleister-Matching</li>
+          <li>Fachliche Angebotsbewertung</li>
+          <li>Begleitung bei Vergabe & Projektstart</li>
+          <li>Optionale Projektkontrolle als Kontrollinstanz</li>
+        </ul>
+      </div>
+      <div class="scope-card no">
+        <h4>✗ Das tue ich nicht</h4>
+        <ul>
+          <li>Eigene IT-Umsetzung / Entwicklung</li>
+          <li>Personalvermittlung / Headhunting</li>
+          <li>Beratung von Privatpersonen</li>
+          <li>Rechtsberatung oder Vertragsgestaltung</li>
+          <li>Haftung für Leistungen Dritter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       KONTAKT
+  ══════════════════════════════════════════ -->
+  <section id="kontakt">
+    <div class="contact-inner">
+      <p class="section-label" style="text-align:center;">Kontakt</p>
+      <h2>Haben Sie einen IT-Auftrag zu vergeben?</h2>
+      <p>Das erste Gespräch ist kostenlos und unverbindlich. Erzählen Sie mir, was Sie brauchen – ich finde den richtigen Partner.</p>
+
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="label">E-Mail</span>
+          <a href="mailto:info@rattenbacher.de">info@rattenbacher.de</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Web</span>
+          <a href="https://rattenbacher.de">rattenbacher.de</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Region</span>
+          <span>Donauwörth · Augsburg · Ingolstadt · Ulm</span>
+        </div>
+        <div class="contact-row">
+          <span class="label">Reaktionszeit</span>
+          <span>In der Regel innerhalb von 24 Stunden</span>
+        </div>
+      </div>
+
+      <a href="mailto:info@rattenbacher.de" class="btn-primary">Jetzt Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-brand">Rattenbacher-<span>IT</span> · der IT-Spezialist</div>
+    <div class="footer-links">
+      <a href="/">← Zurück zur Hauptseite</a>
+      <a href="/#leistungen">Leistungen</a>
+      <a href="/#ueber">Über mich</a>
+      <a href="/#kontakt">Kontakt</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+    <div class="footer-copy">© 2025 Klaus Rattenbacher · rattenbacher.de</div>
+  </footer>
+
+</body>
+</html>

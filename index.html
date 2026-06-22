@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rattenbacher-IT – der IT-Spezialist · Donauwörth</title>
+<title>Rattenbacher IT – der IT-Spezialist · Donauwörth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -393,17 +393,18 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Rattenbacher-<span>IT</span> <em style="font-style:normal; font-size:0.75rem; color:rgba(255,255,255,0.45); font-family:var(--sans); font-weight:300; letter-spacing:0.04em;">– der IT-Spezialist</em></div>
+  <div class="nav-logo">Rattenbacher <span>IT</span> <em style="font-style:normal; font-size:0.75rem; color:rgba(255,255,255,0.45); font-family:var(--sans); font-weight:300; letter-spacing:0.04em;">– der IT-Spezialist</em></div>
   <ul class="nav-links">
     <li><a href="#leistungen">Leistungen</a></li>
     <li><a href="#ueber">Über mich</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="/b2b" style="color:var(--accent); border:1px solid rgba(200,135,58,0.35); padding:0.35rem 0.9rem; border-radius:4px; transition:background 0.2s;" onmouseover="this.style.background='rgba(200,135,58,0.1)'" onmouseout="this.style.background='transparent'">Für Unternehmen →</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.65;z-index:0"></canvas>
+  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.5;z-index:0"></canvas>
   <p class="hero-eyebrow">IT-Service · Donauwörth & Region</p>
   <h1>IT, die <em>wirklich<br>funktioniert.</em></h1>
   <p class="hero-sub">
@@ -502,10 +503,18 @@
       <span class="service-tag">Netzwerk · NAS · Hardware</span>
     </div>
 
+    <!-- B2B VERMITTLUNG -->
+    <a href="/b2b" class="service-card" style="text-decoration:none; display:block; background:var(--navy); border-top: 2px solid var(--accent);">
+      <div class="service-icon" style="background:rgba(200,135,58,0.15);">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 style="color:var(--white);">IT-Vermittlung für Unternehmen</h3>
+      <p style="color:rgba(255,255,255,0.55);">Sie wissen, was Ihre IT leisten soll – ich finde, wer es umsetzt. Neutral, strukturiert, erfahren. Exklusiv für B2B-Kunden.</p>
+      <span class="service-tag" style="color:var(--accent-light);">Briefing · Matching · Vergabe →</span>
+    </a>
+
   </div>
 </section>
-
-<!-- ABOUT -->
 <section id="ueber">
   <div class="about-grid">
     <div class="about-text">
@@ -583,7 +592,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Rattenbacher-<span>IT</span> · der IT-Spezialist</div>
+  <div class="footer-logo">Rattenbacher <span>IT</span> · der IT-Spezialist</div>
   <p>© 2025 Klaus Rattenbacher · rattenbacher.de · Impressum · Datenschutz</p>
 </footer>
 
@@ -616,8 +625,8 @@ window.addEventListener('load', function(){
   const COUNT = 55;
   const BOND_DIST = 180;
   const MAX_BONDS_PER_NODE = 5;
-  const FADE_SPEED = 0.0022;
-  const MAX_ALPHA = 0.72;
+  const FADE_SPEED = 0.0018;
+  const MAX_ALPHA = 0.55;
 
   function resize(){
     W = canvas.width = canvas.parentElement.offsetWidth;
@@ -677,14 +686,14 @@ window.addEventListener('load', function(){
       grad.addColorStop(0.5,'rgba(228,168,90,'+(bond.alpha*0.7)+')');
       grad.addColorStop(1,'rgba(200,135,58,'+bond.alpha+')');
       ctx.strokeStyle=grad;
-      ctx.lineWidth=1.1;
+      ctx.lineWidth=0.7;
       ctx.stroke();
     });
 
     // Draw nodes
     nodes.forEach(n=>{
       n.pulse += 0.022;
-      const glow=0.78+Math.sin(n.pulse)*0.35;
+      const glow=0.65+Math.sin(n.pulse)*0.35;
 
       // Glow ring on bonded nodes
       if(n.bondCount>0){
