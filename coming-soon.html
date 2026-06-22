@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rattenbacher-IT · IT-Beratung & Vermittlung · Donauwörth</title>
+<meta name="description" content="Rattenbacher-IT berät und vermittelt IT-Dienstleister für Unternehmen, Einzelunternehmer und Selbstständige – Donauwörth & Region." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:        #0D1B2A;
+    --accent:      #C8873A;
+    --accent-light:#E0A85A;
+    --muted:       rgba(255,255,255,0.45);
+    --serif:       'DM Serif Display', Georgia, serif;
+    --sans:        'DM Sans', system-ui, sans-serif;
+  }
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--navy);
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(200,135,58,0.15);
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+  .logo span { color: var(--accent); }
+  .logo-sub {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+  .header-contact {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: right;
+  }
+  .header-contact a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .header-contact a:hover { text-decoration: underline; }
+
+  /* ── MAIN ── */
+  main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5rem 3rem;
+    max-width: 900px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(200,135,58,0.4);
+    border-radius: 100px;
+    padding: 0.3rem 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.08;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  h1 em { font-style: italic; color: var(--accent-light); }
+
+  .intro {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    max-width: 580px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  /* ── LEISTUNGS-PILLS ── */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3.5rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .pill {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 0.4rem 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  /* ── CTA ── */
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-block;
+    color: rgba(255,255,255,0.6);
+    padding: 0.9rem 2.2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+  footer nav { display: flex; gap: 1.5rem; }
+  footer nav a { font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  footer nav a:hover { color: var(--accent-light); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .header-contact { text-align: left; }
+    main { padding: 3.5rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="netCanvas"></canvas>
+
+<header>
+  <div>
+    <div class="logo">Rattenbacher-<span>IT</span></div>
+    <div class="logo-sub">Donauwörth · Bayern</div>
+  </div>
+  <div class="header-contact">
+    Fragen? <a href="mailto:info@rattenbacher.de">info@rattenbacher.de</a>
+  </div>
+</header>
+
+<main>
+  <div class="badge">IT-Beratung & Vermittlung · Donauwörth & Region</div>
+
+  <h1>Die richtige IT.<br><em>Der richtige Partner.</em></h1>
+
+  <p class="intro">
+    Rattenbacher-IT analysiert Ihren IT-Bedarf, erstellt Lasten- und Pflichtenhefte
+    und vermittelt den passenden IT-Dienstleister. Für Unternehmen, Einzelunternehmer
+    und Selbstständige in der Region. Über 25 Jahre IT-Erfahrung.
+  </p>
+
+  <div class="pills">
+    <span class="pill">Beratung & Analyse</span>
+    <span class="pill">Lastenheft & Pflichtenheft</span>
+    <span class="pill">Dienstleister-Matching</span>
+    <span class="pill">Vergabebegleitung</span>
+    <span class="pill">Plattformberatung</span>
+    <span class="pill">Virtualisierung · Microsoft 365 · Windows · KI</span>
+    <span class="pill">Donauwörth · Augsburg · Ingolstadt · Ulm</span>
+  </div>
+
+  <div class="cta-row">
+    <a href="mailto:info@rattenbacher.de" class="btn-primary">Jetzt Kontakt aufnehmen</a>
+    <a href="#" class="btn-ghost">Leistungen & Pakete · Demnächst →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Klaus Rattenbacher · rattenbacher.de</p>
+  <nav>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
+
+<script>
+window.addEventListener('load', function(){
+  const canvas = document.getElementById('netCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], bonds = new Map();
+  const COUNT = 60, BOND_DIST = 190, MAX_BONDS = 5, FADE = 0.0018, MAX_A = 0.55;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  function makeNode(i){
+    return { id:i, x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35,
+      r:Math.random()*1.8+1, pulse:Math.random()*Math.PI*2,
+      big:Math.random()>0.88, bondCount:0 };
+  }
+  function bondKey(a,b){ return a<b ? a+'-'+b : b+'-'+a; }
+  function init(){ resize(); nodes=Array.from({length:COUNT},(_,i)=>makeNode(i)); bonds=new Map(); }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j];
+        if(a.bondCount>=MAX_BONDS||b.bondCount>=MAX_BONDS) continue;
+        const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),k=bondKey(a.id,b.id);
+        if(d<BOND_DIST&&!bonds.has(k)){ bonds.set(k,{a:a.id,b:b.id,alpha:0}); a.bondCount++; b.bondCount++; }
+      }
+    }
+    bonds.forEach(bond=>{
+      if(bond.alpha<MAX_A) bond.alpha+=FADE;
+      const a=nodes[bond.a],b=nodes[bond.b];
+      const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+      g.addColorStop(0,'rgba(200,135,58,'+bond.alpha+')');
+      g.addColorStop(.5,'rgba(228,168,90,'+(bond.alpha*.7)+')');
+      g.addColorStop(1,'rgba(200,135,58,'+bond.alpha+')');
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=g; ctx.lineWidth=0.7; ctx.stroke();
+    });
+    nodes.forEach(n=>{
+      n.pulse+=0.022;
+      const glow=0.65+Math.sin(n.pulse)*0.35;
+      if(n.bondCount>0){ ctx.beginPath(); ctx.arc(n.x,n.y,n.r*(2+n.bondCount*.5),0,Math.PI*2); ctx.strokeStyle='rgba(200,135,58,'+(glow*.12)+')'; ctx.lineWidth=1; ctx.stroke(); }
+      if(n.big){ ctx.beginPath(); ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2); ctx.strokeStyle='rgba(200,135,58,'+(glow*.2)+')'; ctx.lineWidth=0.8; ctx.stroke(); }
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(200,135,58,'+glow+')'; ctx.fill();
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', init);
+  init(); draw();
+});
+</script>
+
+</body>
+</html>
