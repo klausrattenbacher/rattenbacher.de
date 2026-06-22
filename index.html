@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rattenbacher IT – der IT-Spezialist · Donauwörth</title>
+<title>Rattenbacher-IT · IT-Beratung & Vermittlung · Donauwörth</title>
+<meta name="description" content="Rattenbacher-IT berät Unternehmen, Einzelunternehmer und Selbstständige bei IT-Projekten – erstellt Lasten- und Pflichtenhefte und vermittelt den passenden IT-Dienstleister. Donauwörth & Region." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #0D1B2A;
-    --navy-mid: #162535;
-    --navy-light: #1E3448;
-    --accent: #C8873A;
-    --accent-light: #E0A85A;
-    --cream: #F5F0E8;
-    --cream-dark: #EDE6D6;
-    --text-main: #0D1B2A;
-    --text-muted: #5A6B7A;
-    --white: #FFFFFF;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
+    --navy:        #0D1B2A;
+    --navy-mid:    #162535;
+    --navy-light:  #1E3448;
+    --accent:      #C8873A;
+    --accent-light:#E0A85A;
+    --cream:       #F5F0E8;
+    --cream-dark:  #EDE6D6;
+    --text-main:   #0D1B2A;
+    --text-muted:  #3A4A55;
+    --white:       #FFFFFF;
+    --serif:       'DM Serif Display', Georgia, serif;
+    --sans:        'DM Sans', system-ui, sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -51,7 +52,7 @@
     letter-spacing: 0.01em;
   }
   .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a {
     color: rgba(255,255,255,0.7);
     text-decoration: none;
@@ -62,6 +63,17 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent-light); }
+  .nav-links .nav-cta {
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+  }
+  .nav-links .nav-cta:hover { background: var(--accent-light); color: var(--white); }
 
   /* ── HERO ── */
   .hero {
@@ -81,7 +93,9 @@
       radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,135,58,0.08) 0%, transparent 60%),
       radial-gradient(ellipse 40% 60% at 10% 80%, rgba(30,52,72,0.8) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 0;
   }
+  .hero > * { position: relative; z-index: 1; }
   .hero-eyebrow {
     font-size: 0.78rem;
     letter-spacing: 0.18em;
@@ -89,6 +103,7 @@
     color: var(--accent);
     margin-bottom: 1.5rem;
     font-weight: 500;
+    animation: fadeUp 0.6s ease both;
   }
   .hero h1 {
     font-family: var(--serif);
@@ -97,21 +112,21 @@
     line-height: 1.05;
     max-width: 820px;
     margin-bottom: 1.8rem;
+    animation: fadeUp 0.7s 0.1s ease both;
   }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent-light);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent-light); }
   .hero-sub {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.55);
-    max-width: 500px;
-    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    line-height: 1.75;
     margin-bottom: 3rem;
     font-weight: 300;
+    animation: fadeUp 0.7s 0.2s ease both;
   }
   .hero-cta {
     display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+    animation: fadeUp 0.7s 0.32s ease both;
   }
   .btn-primary {
     display: inline-block;
@@ -138,13 +153,12 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); }
-
   .hero-badge {
     position: absolute;
     right: 4rem; bottom: 4rem;
     display: flex; flex-direction: column; align-items: center;
-    gap: 0.3rem;
-    opacity: 0.45;
+    gap: 0.3rem; opacity: 0.45;
+    animation: fadeUp 0.7s 0.4s ease both;
   }
   .hero-badge .num {
     font-family: var(--serif);
@@ -198,14 +212,50 @@
   .section-sub {
     font-size: 1rem;
     color: var(--text-muted);
-    max-width: 520px;
+    max-width: 560px;
     line-height: 1.7;
-    font-weight: 300;
+    font-weight: 400;
+    margin-bottom: 3.5rem;
   }
 
-  /* ── SERVICES ── */
-  #leistungen { background: var(--cream); }
-  .services-intro { max-width: 680px; margin-bottom: 4rem; }
+  /* ── WIE ES FUNKTIONIERT ── */
+  #prozess { background: var(--cream); }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    background: rgba(13,27,42,0.08);
+    border: 1.5px solid rgba(13,27,42,0.08);
+  }
+  .process-card {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+  }
+  .process-card:hover { background: var(--white); }
+  .process-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+  .process-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+    color: var(--text-main);
+  }
+  .process-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* ── LEISTUNGSFELDER ── */
+  #leistungen { background: var(--cream-dark); }
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -214,11 +264,9 @@
     border: 1.5px solid rgba(13,27,42,0.08);
   }
   .service-card {
-    background: var(--cream);
+    background: var(--cream-dark);
     padding: 2.5rem 2rem;
     transition: background 0.25s;
-    position: relative;
-    cursor: default;
   }
   .service-card:hover { background: var(--white); }
   .service-icon {
@@ -231,7 +279,7 @@
   .service-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .service-card h3 {
     font-family: var(--serif);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     margin-bottom: 0.7rem;
     color: var(--text-main);
   }
@@ -239,7 +287,7 @@
     font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
   }
   .service-tag {
     display: inline-block;
@@ -251,7 +299,96 @@
     font-weight: 500;
   }
 
-  /* ── ABOUT ── */
+  /* ── PAKETE ── */
+  #pakete { background: var(--navy); }
+  #pakete .section-title { color: var(--white); }
+  #pakete .section-sub { color: rgba(255,255,255,0.5); }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: rgba(255,255,255,0.06);
+  }
+  .pkg-card {
+    background: var(--navy-light);
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+    transition: background 0.2s;
+  }
+  .pkg-card:hover { background: rgba(200,135,58,0.08); }
+  .pkg-card.featured {
+    background: var(--navy-mid);
+    border-top: 3px solid var(--accent);
+  }
+  .pkg-featured-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .pkg-name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--white);
+    line-height: 1;
+  }
+  .pkg-audience {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    margin-top: 0.2rem;
+  }
+  .pkg-price {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    font-weight: 300;
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
+  .pkg-price strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--accent-light);
+    font-weight: 500;
+    font-family: var(--serif);
+  }
+  .pkg-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.7rem;
+    flex: 1;
+  }
+  .pkg-features li {
+    font-size: 0.86rem;
+    color: rgba(255,255,255,0.6);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.45;
+    font-weight: 300;
+  }
+  .pkg-features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 500; }
+  .pkg-features li.na { color: rgba(255,255,255,0.2); }
+  .pkg-features li.na::before { content: '–'; color: rgba(255,255,255,0.2); }
+  .pkg-cta {
+    display: inline-block;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .pkg-cta:hover { border-color: var(--accent); color: var(--accent-light); }
+  .pkg-card.featured .pkg-cta {
+    background: var(--accent); color: var(--white); border-color: var(--accent);
+  }
+  .pkg-card.featured .pkg-cta:hover { background: var(--accent-light); border-color: var(--accent-light); }
+
+  /* ── ÜBER MICH ── */
   #ueber { background: var(--navy); color: var(--white); }
   .about-grid {
     display: grid;
@@ -260,7 +397,6 @@
     align-items: center;
   }
   #ueber .section-title { color: var(--white); }
-  #ueber .section-sub { color: rgba(255,255,255,0.5); max-width: 100%; }
   .about-text p {
     font-size: 0.95rem;
     color: rgba(255,255,255,0.65);
@@ -294,7 +430,7 @@
     font-weight: 300;
   }
 
-  /* ── CONTACT ── */
+  /* ── KONTAKT ── */
   #kontakt { background: var(--cream-dark); }
   .contact-wrap {
     display: grid;
@@ -306,7 +442,7 @@
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.7;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
   }
   .contact-detail {
@@ -314,6 +450,7 @@
     margin-bottom: 0.9rem;
     font-size: 0.9rem;
     color: var(--text-main);
+    font-weight: 400;
   }
   .contact-detail svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; flex-shrink: 0; }
   form { display: flex; flex-direction: column; gap: 1rem; }
@@ -329,7 +466,7 @@
     color: var(--text-main);
     outline: none;
     transition: border-color 0.2s;
-    font-weight: 300;
+    font-weight: 400;
   }
   input:focus, textarea:focus, select:focus { border-color: var(--accent); }
   textarea { resize: vertical; min-height: 120px; }
@@ -364,18 +501,15 @@
   }
   .footer-logo { font-family: var(--serif); color: var(--white); font-size: 1.1rem; }
   .footer-logo span { color: var(--accent); }
-  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-weight: 300; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-light); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero h1      { animation: fadeUp 0.7s 0.1s ease both; }
-  .hero-sub     { animation: fadeUp 0.7s 0.2s ease both; }
-  .hero-cta     { animation: fadeUp 0.7s 0.32s ease both; }
-  .hero-badge   { animation: fadeUp 0.7s 0.4s ease both; }
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -386,6 +520,7 @@
     .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
     .trust-bar { padding: 1rem 1.5rem; gap: 2rem; }
     footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { justify-content: center; }
   }
 </style>
 </head>
@@ -393,26 +528,27 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Rattenbacher <span>IT</span> <em style="font-style:normal; font-size:0.75rem; color:rgba(255,255,255,0.45); font-family:var(--sans); font-weight:300; letter-spacing:0.04em;">– der IT-Spezialist</em></div>
+  <div class="nav-logo">Rattenbacher-<span>IT</span></div>
   <ul class="nav-links">
-    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#prozess">So funktioniert es</a></li>
+    <li><a href="#leistungen">Leistungsfelder</a></li>
+    <li><a href="#pakete">Pakete</a></li>
     <li><a href="#ueber">Über mich</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="/b2b" style="color:var(--accent); border:1px solid rgba(200,135,58,0.35); padding:0.35rem 0.9rem; border-radius:4px; transition:background 0.2s;" onmouseover="this.style.background='rgba(200,135,58,0.1)'" onmouseout="this.style.background='transparent'">IT-Vermittlung →</a></li>
+    <li><a href="#kontakt" class="nav-cta">Erstgespräch</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.5;z-index:0"></canvas>
-  <p class="hero-eyebrow">IT-Service · Donauwörth & Region</p>
-  <h1>IT, die <em>wirklich<br>funktioniert.</em></h1>
+  <canvas id="netCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.5;z-index:0;"></canvas>
+  <p class="hero-eyebrow">IT-Beratung & Vermittlung · Donauwörth & Region</p>
+  <h1>Die richtige IT.<br><em>Der richtige Partner.</em></h1>
   <p class="hero-sub">
-    Persönliche Beratung, pragmatische Lösungen und über zwei Jahrzehnte Erfahrung aus der Praxis – direkt vor Ihrer Haustür.
+    Rattenbacher-IT analysiert Ihren IT-Bedarf, erstellt das Lastenheft und vermittelt den passenden IT-Dienstleister. Für Unternehmen, Einzelunternehmer und Selbstständige in der Region.
   </p>
   <div class="hero-cta">
     <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
-    <a href="#leistungen" class="btn-ghost">Alle Leistungen →</a>
+    <a href="#prozess" class="btn-ghost">So funktioniert es →</a>
   </div>
   <div class="hero-badge">
     <span class="num">25+</span>
@@ -424,29 +560,82 @@
 <div class="trust-bar">
   <div class="trust-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-    17 Jahre Siemens Medical
+    17 Jahre Siemens Healthineers
   </div>
   <div class="trust-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-    Lokaler Ansprechpartner vor Ort
+    Neutral – immer auf Ihrer Seite
   </div>
   <div class="trust-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-    Keine Vertragsbindung
+    Lasten- & Pflichtenheft inklusive
   </div>
   <div class="trust-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-    KI-Beratung für KMU
+    Erstgespräch kostenlos & unverbindlich
   </div>
 </div>
 
-<!-- SERVICES -->
-<section id="leistungen">
-  <div class="services-intro">
-    <p class="section-label">Leistungen</p>
-    <h2 class="section-title">Was ich für Sie tue</h2>
-    <p class="section-sub">Ob Einzelperson, kleines Büro oder mittelständisches Unternehmen – ich kümmere mich um Ihre IT, damit Sie sich um Ihr Kerngeschäft kümmern können.</p>
+<!-- PROZESS -->
+<section id="prozess">
+  <p class="section-label">So funktioniert es</p>
+  <h2 class="section-title">Von der Idee zum<br>richtigen Dienstleister.</h2>
+  <p class="section-sub">Sie wissen, was Sie von Ihrer IT erwarten – ich finde, wer es umsetzt.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5px;background:rgba(13,27,42,0.08);border:1.5px solid rgba(13,27,42,0.08);margin-bottom:3rem;">
+
+    <div style="background:var(--cream);padding:1.8rem 1.5rem;transition:background 0.25s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--cream)'">
+      <div style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">Einzelunternehmer</div>
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;font-style:italic;font-weight:400;">"Ich brauche eine zuverlässige Cloud-Lösung, weiß aber nicht welche für mich passt."</p>
+    </div>
+
+    <div style="background:var(--cream);padding:1.8rem 1.5rem;transition:background 0.25s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--cream)'">
+      <div style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">Selbstständige</div>
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;font-style:italic;font-weight:400;">"Meine IT läuft nicht rund – ich weiß nicht, wo ich anfangen soll."</p>
+    </div>
+
+    <div style="background:var(--cream);padding:1.8rem 1.5rem;transition:background 0.25s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--cream)'">
+      <div style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">KMU</div>
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;font-style:italic;font-weight:400;">"Wir wollen Microsoft 365 einführen, brauchen aber jemanden der das strukturiert angeht."</p>
+    </div>
+
+    <div style="background:var(--cream);padding:1.8rem 1.5rem;transition:background 0.25s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--cream)'">
+      <div style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">Großunternehmen</div>
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;font-style:italic;font-weight:400;">"Wir haben ein IT-Projekt – aber keinen neutralen Berater der das Lastenheft erstellt und die richtigen Dienstleister findet."</p>
+    </div>
+
   </div>
+
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-num">1</div>
+      <h3>Beratung & Analyse</h3>
+      <p>Wir analysieren gemeinsam Ihre IT-Situation, Ziele, Budget und Rahmenbedingungen. Sie bekommen eine klare, fachliche Einschätzung – ohne Verkaufsinteresse.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">2</div>
+      <h3>Lastenheft & Pflichtenheft</h3>
+      <p>Ich erstelle ein vollständiges Lasten- und Pflichtenheft. Der vermittelte Dienstleister weiß damit exakt, was zu tun ist – keine Missverständnisse, keine Kostenfallen.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">3</div>
+      <h3>Dienstleister-Matching</h3>
+      <p>Aus meinem geprüften Netzwerk identifiziere ich den passenden IT-Spezialisten für Ihr Projekt – abgestimmt auf Ihre Anforderungen, Branche und Budget.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">4</div>
+      <h3>Vergabe & Begleitung</h3>
+      <p>Ich begleite Sie beim Angebotsvergleich und der Vergabe. Auf Wunsch bleibe ich als neutrale Kontrollinstanz während des Projekts erreichbar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGSFELDER -->
+<section id="leistungen">
+  <p class="section-label">Leistungsfelder</p>
+  <h2 class="section-title">Womit ich Sie berate –<br>und wen ich vermittle.</h2>
+  <p class="section-sub">In diesen Bereichen kenne ich den Markt, die Anbieter und die typischen Fallstricke. Sie profitieren von meinem Wissen – ohne selbst in die Recherche einzutauchen.</p>
+
   <div class="services-grid">
 
     <div class="service-card">
@@ -454,7 +643,7 @@
         <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       </div>
       <h3>Virtualisierung</h3>
-      <p>VMware, Hyper-V, Proxmox – ich plane, migriere und betreibe virtuelle Infrastrukturen zuverlässig und effizient. Auch Homelab- und Kleinunternehmenslösungen.</p>
+      <p>VMware, Hyper-V, Proxmox – ich berate Sie zur richtigen Plattform, erstelle das Lastenheft und vermittle den passenden Dienstleister für Planung und Umsetzung.</p>
       <span class="service-tag">VMware · Proxmox · Hyper-V</span>
     </div>
 
@@ -463,26 +652,26 @@
         <svg viewBox="0 0 24 24"><path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 1 0-4.9-6H7a4 4 0 0 0-4 4z"/></svg>
       </div>
       <h3>Microsoft 365</h3>
-      <p>Einrichtung, Migration, Schulung und laufende Administration. Teams, SharePoint, Exchange, Entra ID – alles aus einer Hand, klar und verständlich erklärt.</p>
-      <span class="service-tag">Teams · Exchange · SharePoint</span>
+      <p>Migration, Lizenzberatung, Administration – ich berate zu Teams, SharePoint, Exchange und Entra ID und vermittle zertifizierte Microsoft-Partner für die Umsetzung.</p>
+      <span class="service-tag">Teams · Exchange · SharePoint · Entra ID</span>
     </div>
 
     <div class="service-card">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
       </div>
-      <h3>Windows-Server & -Client</h3>
-      <p>Active Directory, Gruppenrichtlinien, Updates, Troubleshooting – Windows-Infrastrukturen von A bis Z, sauber dokumentiert und langfristig stabil.</p>
-      <span class="service-tag">Windows Server · AD · GPO</span>
+      <h3>Windows-Infrastruktur</h3>
+      <p>Active Directory, Server- und Client-Management, GPO – ich berate zu Konzept und Anforderungen und vermittle Dienstleister für Aufbau, Migration und Betrieb.</p>
+      <span class="service-tag">Windows Server · Active Directory · GPO</span>
     </div>
 
     <div class="service-card">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
       </div>
-      <h3>KI-Beratung für KMU</h3>
-      <p>Praktische KI-Tools für Ihr Unternehmen: Was lohnt sich wirklich? Ich begleite Sie bei der Einführung und zeige, wie KI im Alltag echten Nutzen bringt – ohne Buzzwords.</p>
-      <span class="service-tag">Claude · Copilot · Automatisierung</span>
+      <h3>KI-Beratung</h3>
+      <p>Welche KI-Tools bringen Ihrem Betrieb echten Nutzen? Ich berate Sie zu sinnvollen Einsatzmöglichkeiten und vermittle Dienstleister für Implementierung und Einführung.</p>
+      <span class="service-tag">Microsoft Copilot · Claude · Automatisierung</span>
     </div>
 
     <div class="service-card">
@@ -490,8 +679,8 @@
         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
       <h3>IT-Schulungen</h3>
-      <p>Mitarbeiterschulungen, Einzelcoaching oder Gruppen – praxisnah, verständlich und auf Ihre Software zugeschnitten. Auch als Vor-Ort-Termin im Raum Donauwörth.</p>
-      <span class="service-tag">Office 365 · Windows · KI-Tools</span>
+      <p>Mitarbeiterschulungen zu Microsoft 365, Windows oder KI-Tools – ich berate zum Schulungsbedarf und vermittle passende Trainer und Schulungsanbieter.</p>
+      <span class="service-tag">Microsoft 365 · Windows · KI-Tools</span>
     </div>
 
     <div class="service-card">
@@ -499,31 +688,105 @@
         <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       </div>
       <h3>Hardware & Infrastruktur</h3>
-      <p>Beratung beim Kauf, Einrichtung von Geräten, Netzwerkkonfiguration, Fritz!Box, NAS, Drucker – alles, was Sie für einen reibungslosen Betrieb brauchen.</p>
-      <span class="service-tag">Netzwerk · NAS · Hardware</span>
+      <p>Server, Netzwerk, NAS, Peripherie – ich berate zu Anforderungen und Budget und vermittle Systemhäuser und Dienstleister für Beschaffung und Einrichtung.</p>
+      <span class="service-tag">Server · Netzwerk · NAS · Peripherie</span>
     </div>
 
-    <!-- B2B VERMITTLUNG -->
-    <a href="/b2b" class="service-card" style="text-decoration:none; display:block; background:var(--navy); border-top: 2px solid var(--accent);">
-      <div class="service-icon" style="background:rgba(200,135,58,0.15);">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="7" height="7" rx="1"/><rect x="15" y="3" width="7" height="7" rx="1"/><rect x="2" y="14" width="7" height="7" rx="1"/><rect x="15" y="14" width="7" height="7" rx="1"/></svg>
       </div>
-      <h3 style="color:var(--white);">IT-Vermittlung für Unternehmen</h3>
-      <p style="color:rgba(255,255,255,0.55);">Sie wissen, was Ihre IT leisten soll – ich finde, wer es umsetzt. Neutral, strukturiert, erfahren. Exklusiv für B2B-Kunden.</p>
-      <span class="service-tag" style="color:var(--accent-light);">Briefing · Matching · Vergabe →</span>
-    </a>
+      <h3>Plattformberatung</h3>
+      <p>Microsoft 365, Google Workspace, Nextcloud, Open-Xchange – welche Plattform passt zu Ihrem Unternehmen? Ich vergleiche neutral die Optionen, bewerte Kosten, Datenschutz und Funktionsumfang und empfehle die passende Lösung – bevor ein Dienstleister beauftragt wird.</p>
+      <span class="service-tag">Microsoft 365 · Google Workspace · Nextcloud · Open-Xchange</span>
+    </div>
 
   </div>
 </section>
+
+<!-- PAKETE -->
+<section id="pakete">
+  <p class="section-label">Angebotspakete</p>
+  <h2 class="section-title">Drei Modelle.<br>Klare Konditionen.</h2>
+  <p class="section-sub">Ob einmalige Beratung oder dauerhafter Partner für IT-Beschaffung – wählen Sie das Modell, das zu Ihrem Bedarf passt.</p>
+
+  <div class="packages-grid">
+
+    <div class="pkg-card">
+      <div>
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-audience">Einmalige Beratung & Vermittlung</div>
+      </div>
+      <div class="pkg-price">
+        <strong>Erfolgshonorar 8–12 %</strong>
+        der vermittelten Auftragssumme · nur bei erfolgreicher Vergabe
+      </div>
+      <ul class="pkg-features">
+        <li>Beratungsgespräch & Bedarfsanalyse</li>
+        <li>Lastenheft & Pflichtenheft</li>
+        <li>Dienstleister-Matching</li>
+        <li>Fachliche Angebotsbewertung</li>
+        <li class="na">Vergabebegleitung</li>
+        <li class="na">Laufende Projektkontrolle</li>
+      </ul>
+      <a href="#kontakt" class="pkg-cta">Erstgespräch vereinbaren</a>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-featured-label">Empfohlen</div>
+      <div>
+        <div class="pkg-name">Professional</div>
+        <div class="pkg-audience">Mittlere Projekte · bis 3 Vergaben/Jahr</div>
+      </div>
+      <div class="pkg-price">
+        <strong>500–800 € / Monat</strong>
+        Retainer + 5 % Erfolgshonorar je Vergabe
+      </div>
+      <ul class="pkg-features">
+        <li>Beratungsgespräch & Bedarfsanalyse</li>
+        <li>Lastenheft & Pflichtenheft</li>
+        <li>Dienstleister-Matching</li>
+        <li>Fachliche Angebotsbewertung</li>
+        <li>Vergabebegleitung inklusive</li>
+        <li>Projektkontrolle auf Stundenbasis</li>
+      </ul>
+      <a href="#kontakt" class="pkg-cta">Erstgespräch vereinbaren</a>
+    </div>
+
+    <div class="pkg-card">
+      <div>
+        <div class="pkg-name">Partner</div>
+        <div class="pkg-audience">Laufender IT-Beschaffungsbedarf</div>
+      </div>
+      <div class="pkg-price">
+        <strong>1.200–2.000 € / Monat</strong>
+        Retainer + 3 % Erfolgshonorar · unbegrenzte Vergaben
+      </div>
+      <ul class="pkg-features">
+        <li>Beratungsgespräch & Bedarfsanalyse</li>
+        <li>Lastenheft & Pflichtenheft</li>
+        <li>Dienstleister-Matching</li>
+        <li>Fachliche Angebotsbewertung</li>
+        <li>Vergabebegleitung inklusive</li>
+        <li>Laufende Projektkontrolle inklusive</li>
+      </ul>
+      <a href="#kontakt" class="pkg-cta">Erstgespräch vereinbaren</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
 <section id="ueber">
   <div class="about-grid">
     <div class="about-text">
       <p class="section-label">Über mich</p>
-      <h2 class="section-title">Erfahrung, die zählt.</h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.5); margin-bottom:1.5rem">Kein Callcenter, kein Ticketsystem. Ich bin Klaus Rattenbacher – und ich kümmere mich persönlich.</p>
-      <p>Über 25 Jahre IT-Erfahrung: Von 2000 bis 2007 als Fachinformatiker Systemintegration im Service und Support bei der datac Kommunikationssysteme GmbH in Augsburg (heute Teil der q.beyond AG). Ab 2008 bis heute bei der Siemens Healthcare AG – seit 2018 als Siemens Healthineers AG firmiert – als IT-Operation Professional Applications.</p>
-      <p>Jetzt gebe ich dieses Wissen direkt an Unternehmen und Privatpersonen in der Region weiter – persönlich, verständlich und ohne versteckte Kosten.</p>
-      <p>Ich bin in Donauwörth verwurzelt und kenne die Anforderungen lokaler Betriebe. IT-Probleme löse ich pragmatisch – so, dass sie dauerhaft gelöst bleiben.</p>
+      <h2 class="section-title">Erfahrung,<br>die zählt.</h2>
+      <p>Kein Callcenter, kein Ticketsystem. Ich bin Klaus Rattenbacher – und ich berate Sie persönlich.</p>
+      <p>Über 25 Jahre IT-Erfahrung: Von 2000 bis 2007 als Fachinformatiker Systemintegration bei der datac Kommunikationssysteme GmbH in Augsburg. Ab 2008 bei Siemens Healthineers AG als IT-Operation Professional Applications.</p>
+      <p>Dieses Wissen setze ich jetzt als unabhängiger Berater ein – ich kenne die Anbieter, kenne die Fallstricke und weiß, welche Fragen im Lastenheft gestellt werden müssen, damit ein Projekt gelingt.</p>
+      <p>Ich bin in Donauwörth verwurzelt und kenne die Anforderungen lokaler Betriebe. Mein Honorar wird ausschließlich vom Auftraggeber vergütet – unabhängig davon, welcher Dienstleister vermittelt wird.</p>
     </div>
     <div class="stats-grid">
       <div class="stat-box">
@@ -532,58 +795,68 @@
       </div>
       <div class="stat-box">
         <div class="stat-num">17</div>
-        <div class="stat-label">Jahre Siemens Medical</div>
+        <div class="stat-label">Jahre Siemens Healthineers</div>
       </div>
-      <a href="#leistungen" style="text-decoration:none;" class="stat-box">
-        <div class="stat-num">6</div>
-        <div class="stat-label">Fachbereiche → alle ansehen</div>
-      </a>
       <div class="stat-box">
-        <div class="stat-num">50+</div>
-        <div class="stat-label">Jahre in Donauwörth</div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Beratungsfelder</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Neutral & unabhängig</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- KONTAKT -->
 <section id="kontakt">
   <div class="contact-wrap">
     <div class="contact-info">
       <p class="section-label">Kontakt</p>
       <h2 class="section-title">Lassen Sie uns reden.</h2>
-      <p>Das erste Gespräch ist kostenlos und unverbindlich. Erzählen Sie mir, was Sie beschäftigt – ich finde einen Weg.</p>
+      <p>Das erste Gespräch ist kostenlos und unverbindlich. Erzählen Sie mir, was Sie beschäftigt – ich finde den richtigen Weg.</p>
       <div class="contact-detail">
         <svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Donauwörth & Region (Vor-Ort-Service)
+        Donauwörth · Augsburg · Ingolstadt · Ulm
       </div>
       <div class="contact-detail">
         <svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@rattenbacher.de
+        <a href="mailto:info@rattenbacher.de" style="color:var(--text-main);text-decoration:none;">info@rattenbacher.de</a>
       </div>
       <div class="contact-detail">
-        <svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.35 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Auf Anfrage
+        <svg viewBox="0 0 24 24" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Antwort in der Regel innerhalb von 24 Stunden
       </div>
     </div>
-    <form onsubmit="handleSubmit(event)">
+    <form action="https://formspree.io/f/DEINE_FORM_ID" method="POST">
+      <!-- HINWEIS: Ersetze DEINE_FORM_ID mit deiner Formspree-ID nach Registrierung -->
+      <!-- Schritt 1: formspree.io aufrufen -->
+      <!-- Schritt 2: Kostenlosen Account mit info@rattenbacher.de erstellen -->
+      <!-- Schritt 3: Neues Formular anlegen → ID kopieren → hier eintragen -->
+
+      <input type="hidden" name="_subject" value="Neue Anfrage über rattenbacher.de">
+      <input type="hidden" name="_language" value="de">
+      <input type="text" name="_gotcha" style="display:none">
+
       <div class="form-row">
-        <input type="text" placeholder="Vorname" required>
-        <input type="text" placeholder="Nachname" required>
+        <input type="text" name="vorname" placeholder="Vorname" required>
+        <input type="text" name="nachname" placeholder="Nachname" required>
       </div>
-      <input type="email" placeholder="E-Mail-Adresse" required>
-      <input type="text" placeholder="Unternehmen (optional)">
-      <select>
+      <input type="email" name="email" placeholder="E-Mail-Adresse" required>
+      <input type="text" name="unternehmen" placeholder="Unternehmen (optional)">
+      <select name="thema">
         <option value="" disabled selected>Thema auswählen</option>
         <option>Virtualisierung</option>
         <option>Microsoft 365</option>
-        <option>Windows Server / Client</option>
+        <option>Windows-Infrastruktur</option>
         <option>KI-Beratung</option>
-        <option>IT-Schulung</option>
-        <option>Hardware & Netzwerk</option>
+        <option>IT-Schulungen</option>
+        <option>Hardware & Infrastruktur</option>
+        <option>Plattformberatung</option>
         <option>Sonstiges</option>
       </select>
-      <textarea placeholder="Kurze Beschreibung Ihres Anliegens …"></textarea>
+      <textarea name="nachricht" placeholder="Kurze Beschreibung Ihres IT-Vorhabens …"></textarea>
       <p class="form-note">Ihre Daten werden ausschließlich zur Kontaktaufnahme verwendet und nicht weitergegeben.</p>
       <button type="submit" class="btn-submit">Nachricht senden →</button>
     </form>
@@ -592,27 +865,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Rattenbacher <span>IT</span> · der IT-Spezialist</div>
-  <p>© 2025 Klaus Rattenbacher · rattenbacher.de · Impressum · Datenschutz</p>
+  <div class="footer-logo">Rattenbacher-<span>IT</span></div>
+  <div class="footer-links">
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+  <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);font-weight:300;">© 2025 Klaus Rattenbacher · rattenbacher.de</p>
 </footer>
-
-<script>
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
-  btn.textContent = '✓ Nachricht gesendet';
-  btn.style.background = '#0F6E56';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Nachricht senden →';
-    btn.style.background = '';
-    btn.disabled = false;
-    e.target.reset();
-  }, 3000);
-}
-</script>
-
-
 
 
 
@@ -622,112 +881,41 @@ window.addEventListener('load', function(){
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, nodes = [], bonds = new Map();
-  const COUNT = 55;
-  const BOND_DIST = 180;
-  const MAX_BONDS_PER_NODE = 5;
-  const FADE_SPEED = 0.0018;
-  const MAX_ALPHA = 0.55;
-
-  function resize(){
-    W = canvas.width = canvas.parentElement.offsetWidth;
-    H = canvas.height = canvas.parentElement.offsetHeight;
-  }
-
-  function makeNode(i){
-    return {
-      id: i,
-      x: Math.random()*W,
-      y: Math.random()*H,
-      vx: (Math.random()-.5)*.38,
-      vy: (Math.random()-.5)*.38,
-      r: Math.random()*1.8+1,
-      pulse: Math.random()*Math.PI*2,
-      big: Math.random() > 0.88,
-      bondCount: 0
-    };
-  }
-
+  const COUNT = 55, BOND_DIST = 180, MAX_BONDS = 5, FADE = 0.0018, MAX_A = 0.55;
+  function resize(){ W = canvas.width = canvas.parentElement.offsetWidth; H = canvas.height = canvas.parentElement.offsetHeight; }
+  function makeNode(i){ return { id:i, x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.38, vy:(Math.random()-.5)*.38, r:Math.random()*1.8+1, pulse:Math.random()*Math.PI*2, big:Math.random()>0.88, bondCount:0 }; }
   function bondKey(a,b){ return a<b ? a+'-'+b : b+'-'+a; }
-
-  function init(){
-    resize();
-    nodes = Array.from({length:COUNT}, (_,i) => makeNode(i));
-    bonds = new Map();
-  }
-
+  function init(){ resize(); nodes=Array.from({length:COUNT},(_,i)=>makeNode(i)); bonds=new Map(); }
   function draw(){
     ctx.clearRect(0,0,W,H);
-
-    // Check for new bonds
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const a=nodes[i], b=nodes[j];
-        if(a.bondCount>=MAX_BONDS_PER_NODE || b.bondCount>=MAX_BONDS_PER_NODE) continue;
-        const dx=a.x-b.x, dy=a.y-b.y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        const key=bondKey(a.id,b.id);
-        if(dist<BOND_DIST && !bonds.has(key)){
-          bonds.set(key,{a:a.id,b:b.id,alpha:0});
-          a.bondCount++; b.bondCount++;
-        }
-      }
-    }
-
-    // Draw bonds – fade them in slowly
-    bonds.forEach((bond,key)=>{
-      if(bond.alpha < MAX_ALPHA) bond.alpha += FADE_SPEED;
-      const a=nodes[bond.a], b=nodes[bond.b];
-      ctx.beginPath();
-      ctx.moveTo(a.x,a.y);
-      ctx.lineTo(b.x,b.y);
-      // Gradient along the line
-      const grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-      grad.addColorStop(0,'rgba(200,135,58,'+bond.alpha+')');
-      grad.addColorStop(0.5,'rgba(228,168,90,'+(bond.alpha*0.7)+')');
-      grad.addColorStop(1,'rgba(200,135,58,'+bond.alpha+')');
-      ctx.strokeStyle=grad;
-      ctx.lineWidth=0.7;
-      ctx.stroke();
+    for(let i=0;i<nodes.length;i++){ for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j];
+      if(a.bondCount>=MAX_BONDS||b.bondCount>=MAX_BONDS) continue;
+      const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),k=bondKey(a.id,b.id);
+      if(d<BOND_DIST&&!bonds.has(k)){ bonds.set(k,{a:a.id,b:b.id,alpha:0}); a.bondCount++; b.bondCount++; }
+    }}
+    bonds.forEach(bond=>{
+      if(bond.alpha<MAX_A) bond.alpha+=FADE;
+      const a=nodes[bond.a],b=nodes[bond.b];
+      const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+      g.addColorStop(0,'rgba(200,135,58,'+bond.alpha+')');
+      g.addColorStop(.5,'rgba(228,168,90,'+(bond.alpha*.7)+')');
+      g.addColorStop(1,'rgba(200,135,58,'+bond.alpha+')');
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=g; ctx.lineWidth=0.7; ctx.stroke();
     });
-
-    // Draw nodes
     nodes.forEach(n=>{
-      n.pulse += 0.022;
-      const glow=0.65+Math.sin(n.pulse)*0.35;
-
-      // Glow ring on bonded nodes
-      if(n.bondCount>0){
-        ctx.beginPath();
-        ctx.arc(n.x,n.y,n.r*(2+n.bondCount*.5),0,Math.PI*2);
-        ctx.strokeStyle='rgba(200,135,58,'+(glow*0.12)+')';
-        ctx.lineWidth=1;
-        ctx.stroke();
-      }
-
-      if(n.big){
-        ctx.beginPath();
-        ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);
-        ctx.strokeStyle='rgba(200,135,58,'+(glow*0.2)+')';
-        ctx.lineWidth=0.8;
-        ctx.stroke();
-      }
-
-      ctx.beginPath();
-      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(200,135,58,'+glow+')';
-      ctx.fill();
-
+      n.pulse+=0.022; const glow=0.65+Math.sin(n.pulse)*0.35;
+      if(n.bondCount>0){ ctx.beginPath(); ctx.arc(n.x,n.y,n.r*(2+n.bondCount*.5),0,Math.PI*2); ctx.strokeStyle='rgba(200,135,58,'+(glow*.12)+')'; ctx.lineWidth=1; ctx.stroke(); }
+      if(n.big){ ctx.beginPath(); ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2); ctx.strokeStyle='rgba(200,135,58,'+(glow*.2)+')'; ctx.lineWidth=0.8; ctx.stroke(); }
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle='rgba(200,135,58,'+glow+')'; ctx.fill();
       n.x+=n.vx; n.y+=n.vy;
-      if(n.x<0||n.x>W) n.vx*=-1;
-      if(n.y<0||n.y>H) n.vy*=-1;
+      if(n.x<0||n.x>W) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1;
     });
-
     requestAnimationFrame(draw);
   }
-
   window.addEventListener('resize', init);
-  init();
-  draw();
+  init(); draw();
 });
 </script>
 

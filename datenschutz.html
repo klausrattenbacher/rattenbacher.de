@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung · Rattenbacher-IT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0D1B2A; --navy-light: #1E3448;
+    --accent: #C8873A; --accent-light: #E0A85A;
+    --cream: #F5F0E8; --cream-dark: #EDE6D6;
+    --text-main: #0D1B2A; --text-muted: #3A4A55;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text-main); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(13,27,42,0.98);
+    border-bottom: 1px solid rgba(200,135,58,0.2);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-back { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--accent-light); }
+
+  .page-hero {
+    background: var(--navy);
+    padding: 4rem 3rem 3rem;
+    border-bottom: 1px solid rgba(200,135,58,0.15);
+  }
+  .page-hero p { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.8rem; }
+  .page-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); color: #fff; line-height: 1.15; }
+
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+  }
+  .content h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-top: 2.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(13,27,42,0.1);
+  }
+  .content h2:first-child { margin-top: 0; }
+  .content h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+  .content ul {
+    margin: 0.5rem 0 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 400;
+  }
+  .content ul li { margin-bottom: 0.3rem; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .hinweis {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  footer {
+    background: var(--navy);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(200,135,58,0.15);
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  .footer-logo { font-family: var(--serif); color: #fff; font-size: 1.1rem; }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-light); }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-hero { padding: 3rem 1.5rem 2rem; }
+    .content { padding: 2.5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Rattenbacher-<span>IT</span></a>
+  <a href="/" class="nav-back">← Zurück zur Startseite</a>
+</nav>
+
+<div class="page-hero">
+  <p>Rechtliches</p>
+  <h1>Datenschutz­erklärung</h1>
+</div>
+
+<div class="content">
+
+  <h2>1. Verantwortlicher</h2>
+  <p>
+    Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br><br>
+    Klaus Rattenbacher<br>
+    Heckenrosenstr. 9<br>
+    86609 Donauwörth<br>
+    E-Mail: <a href="mailto:info@rattenbacher.de">info@rattenbacher.de</a>
+  </p>
+
+  <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+
+  <h3>Kontaktformular</h3>
+  <p>
+    Wenn Sie das Kontaktformular auf dieser Website nutzen, werden folgende Daten erhoben und gespeichert:
+  </p>
+  <ul>
+    <li>Vorname und Nachname</li>
+    <li>E-Mail-Adresse</li>
+    <li>Unternehmensname (optional)</li>
+    <li>Thema der Anfrage</li>
+    <li>Inhalt Ihrer Nachricht</li>
+  </ul>
+  <p>
+    Diese Daten werden ausschließlich zum Zweck der Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme im Rahmen einer möglichen Geschäftsbeziehung verarbeitet. Eine Weitergabe an Dritte erfolgt nicht, es sei denn, dies ist zur Durchführung des Vermittlungsauftrags erforderlich und Sie haben zugestimmt.
+  </p>
+
+  <h3>Server-Logfiles</h3>
+  <p>
+    Der Hosting-Anbieter dieser Website (GitHub Pages, GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) erhebt beim Aufruf der Seite automatisch technische Zugriffsdaten (IP-Adresse, Browsertyp, Betriebssystem, Datum und Uhrzeit des Zugriffs). Diese Daten werden nicht mit anderen Daten zusammengeführt und dienen ausschließlich der technischen Bereitstellung der Website.
+  </p>
+
+  <h2>3. Zweck der Datenverarbeitung</h2>
+  <p>Die über das Kontaktformular erhobenen Daten werden verarbeitet für:</p>
+  <ul>
+    <li>Die Bearbeitung und Beantwortung Ihrer Anfrage</li>
+    <li>Die Durchführung von IT-Beratungs- und Vermittlungsleistungen</li>
+    <li>Die Anbahnung und Abwicklung von Geschäftsbeziehungen (Kundendaten)</li>
+    <li>Die Kommunikation im Rahmen laufender Aufträge</li>
+  </ul>
+
+  <h2>4. Rechtsgrundlage</h2>
+  <p>
+    Die Verarbeitung Ihrer Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung oder -erfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Kontaktanfragen).
+  </p>
+
+  <h2>5. Speicherdauer</h2>
+  <p>
+    Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage erforderlich ist, bzw. solange gesetzliche Aufbewahrungspflichten bestehen (in der Regel 6–10 Jahre für geschäftliche Unterlagen gemäß HGB und AO). Danach werden die Daten gelöscht.
+  </p>
+
+  <h2>6. Ihre Rechte als betroffene Person</h2>
+  <p>Sie haben gegenüber dem Verantwortlichen folgende Rechte:</p>
+
+  <h3>Recht auf Auskunft (Art. 15 DSGVO)</h3>
+  <p>Sie haben das Recht, Auskunft darüber zu erhalten, welche personenbezogenen Daten wir über Sie verarbeiten.</p>
+
+  <h3>Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+  <p>Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung unvollständiger Daten zu verlangen.</p>
+
+  <h3>Recht auf Löschung (Art. 17 DSGVO)</h3>
+  <p>Sie haben das Recht, die Löschung Ihrer personenbezogenen Daten zu verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+
+  <h3>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+  <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen, etwa wenn Sie die Richtigkeit der Daten bestreiten.</p>
+
+  <h3>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+  <p>Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</p>
+
+  <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+  <p>Sie haben das Recht, der Verarbeitung Ihrer Daten zu widersprechen, sofern die Verarbeitung auf Basis eines berechtigten Interesses erfolgt.</p>
+
+  <h3>Beschwerderecht bei der Aufsichtsbehörde</h3>
+  <p>
+    Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. Für Bayern ist dies:<br><br>
+    Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br>
+    Promenade 27, 91522 Ansbach<br>
+    <a href="https://www.lda.bayern.de" target="_blank" rel="noopener">www.lda.bayern.de</a>
+  </p>
+
+  <h2>7. Cookies</h2>
+  <p>
+    Diese Website verwendet keine Cookies und keine Tracking-Technologien. Es werden keine Analyse- oder Werbecookies eingesetzt.
+  </p>
+
+  <h2>8. Externe Dienste</h2>
+  <p>
+    Diese Website verwendet Google Fonts zur Darstellung von Schriftarten. Dabei wird beim Aufruf der Seite eine Verbindung zu Servern von Google (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) hergestellt. Weitere Informationen finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.
+  </p>
+
+  <h2>9. Aktualität dieser Datenschutzerklärung</h2>
+  <p>
+    Diese Datenschutzerklärung hat den Stand: Juni 2025. Wir behalten uns vor, diese Erklärung bei Änderungen der rechtlichen Grundlagen oder der Website anzupassen.
+  </p>
+
+  <div class="hinweis">
+    <strong>Hinweis:</strong> Diese Datenschutzerklärung wurde nach bestem Wissen erstellt. Für eine abschließende rechtliche Prüfung empfehlen wir die Konsultation eines auf Datenschutzrecht spezialisierten Rechtsanwalts.
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Rattenbacher-<span>IT</span></div>
+  <div class="footer-links">
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+  <p>© 2025 Klaus Rattenbacher · rattenbacher.de</p>
+</footer>
+
+</body>
+</html>
